@@ -41,4 +41,18 @@ public class CarService {
         }
         return list;
     }
+
+    public List<Car> getAllCarsByCylinderCount(String cylinders) {
+        for (Character c : cylinders.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                throw new IllegalStateException("Cylinder count must be a number!");
+            }
+        }
+        Integer cylinderCount = Integer.parseInt(cylinders);
+        List<Car> list = carRepository.findCarsByCylinderCount(cylinderCount);
+        if (list.size() == 0) {
+            throw new IllegalStateException("No cars found with " + cylinderCount + " cylinders!");
+        }
+        return list;
+    }
 }

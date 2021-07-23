@@ -33,5 +33,10 @@ public class CarController {
         return carService.getAllCarsByYear(year);
     }
 
+    @GetMapping(path = "cylinders={c}")
+    public List<Car> getCarsByCylinderCount(@PathVariable("c") String cylinders) {
+        return carService.getAllCarsByCylinderCount(cylinders);
+    }
+
 
 }
