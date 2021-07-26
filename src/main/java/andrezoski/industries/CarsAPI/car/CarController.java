@@ -38,5 +38,20 @@ public class CarController {
         return carService.getAllCarsByCylinderCount(cylinders);
     }
 
+    @GetMapping(path = "mpg/city={m}")
+    public List<Car> getCarsByCityMpg(@PathVariable("m") String cityMpg) {
+        return carService.getAllCarsByCityMpg(cityMpg);
+    }
+
+    @GetMapping(path = "mpg/highway={m}")
+    public List<Car> getCarsByHighwayMpg(@PathVariable("m") String highwayMpg) {
+        return carService.getAllCarsByHighwayMpg(highwayMpg);
+    }
+
+    @PostMapping(path = "add")
+    public void addCar(@RequestBody Car car) {
+        carService.addCar(car);
+    }
+
 
 }

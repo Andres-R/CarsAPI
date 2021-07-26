@@ -13,6 +13,9 @@ public interface CarRepository extends JpaRepository<Car, Long> {
     @Query("SELECT c FROM Car c WHERE c.id = ?1")
     Optional<Car> findCarById(Long id);
 
+    @Query("SELECT c FROM Car c WHERE c.model = ?1 AND c.description = ?2")
+    Optional<Car> findCarByModelAndDescription(String model, String description);
+
     @Query("SELECT c FROM Car c WHERE c.make = ?1 AND c.model = ?2")
     Optional<Car> findCarByMakeAndModel(String make, String model);
 
@@ -21,4 +24,12 @@ public interface CarRepository extends JpaRepository<Car, Long> {
 
     @Query("SELECT c FROM Car c WHERE c.cylinders = :cylinders")
     List<Car> findCarsByCylinderCount(Integer cylinders);
+
+    @Query("SELECT c FROM Car c WHERE c.cityMpg = ?1")
+    List<Car> findCarsByCityMpg(Integer cityMpg);
+
+    @Query("SELECT c FROM Car c WHERE c.highwayMpg = ?1")
+    List<Car> findCarsByHighwayMpg(Integer highwayMpg);
+
+
 }

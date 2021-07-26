@@ -55,4 +55,45 @@ public class CarService {
         }
         return list;
     }
+
+    public List<Car> getAllCarsByCityMpg(String cityMpg) {
+        for (Character c : cityMpg.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                throw new IllegalStateException("City MPG must be a number!");
+            }
+        }
+        Integer actualCityMpg = Integer.parseInt(cityMpg);
+        List<Car> list = carRepository.findCarsByCityMpg(actualCityMpg);
+        if (list.size() == 0) {
+            throw new IllegalStateException("No cars found with " + cityMpg + " city MPG!");
+        }
+        return list;
+    }
+
+    public List<Car> getAllCarsByHighwayMpg(String highwayMpg) {
+        for (Character c : highwayMpg.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                throw new IllegalStateException("Highway MPG must be a number!");
+            }
+        }
+        Integer actualHighwayMpg = Integer.parseInt(highwayMpg);
+        List<Car> list = carRepository.findCarsByHighwayMpg(actualHighwayMpg);
+        if (list.size() == 0) {
+            throw new IllegalStateException("No cars found with " + highwayMpg + " highway MPG!");
+        }
+        return list;
+    }
+
+
+
+
+    public void addCar(Car car) {
+        Optional<Car> optional = carRepository.findCarByModelAndDescription(car.getModel(), car.getDescription());
+        if (optional.isPresent()) {
+            throw new IllegalStateException("Cannot add car, " + car.getModel() + " " +
+                    (car.getDescription().equals("") ? "" : car.getDescription() + " ") + "already saved!");
+        }
+        carRepository.save(car);
+    }
+
 }
