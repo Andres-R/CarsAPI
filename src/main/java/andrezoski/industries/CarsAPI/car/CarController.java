@@ -22,10 +22,11 @@ public class CarController {
     }
 
     @GetMapping(path = "search")
-    public List<Car> getCarByMakeAndModel(
+    public List<Car> getCarByYearAndMakeAndModel(
+            @RequestParam(required = true) String year,
             @RequestParam(required = true) String make,
             @RequestParam(required = true) String model) {
-        return carService.getCarByMakeAndModel(make, model);
+        return carService.getCarByYearAndMakeAndModel(year, make, model);
     }
 
     @GetMapping(path = "year={y}")
@@ -48,9 +49,29 @@ public class CarController {
         return carService.getAllCarsByHighwayMpg(highwayMpg);
     }
 
+    @GetMapping(path = "hp/>/{h}")
+    public List<Car> getCarsByHorsePowerGreaterThan(@PathVariable("h") String hp) {
+        return carService.getAllCarsByHorsePowerGreaterThan(hp);
+    }
+
+    @GetMapping(path = "hp/</{h}")
+    public List<Car> getCarsByHorsePowerLessThan(@PathVariable("h") String hp) {
+        return carService.getAllCarsByHorsePowerLessThan(hp);
+    }
+
     @PostMapping(path = "add")
     public void addCar(@RequestBody Car car) {
         carService.addCar(car);
+    }
+
+    @DeleteMapping(path = "delete/id={i}")
+    public void deleteCarById(@PathVariable("i") String id) {
+        carService.deleteCarById(id);
+    }
+
+    @DeleteMapping(path = "delete")
+    public void deleteCarByYearAndModelAndDescription(String year, String model, String description) {
+        carService.deleteCarByYearAndModelAndDescription(year, model, description);
     }
 
 

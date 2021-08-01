@@ -27,6 +27,22 @@ public class CarConfig {
             Car ddd = new Car(2021, "Mazda", "CX-9", "", 22, 28, 34160.00, 4, 227);
             Car e = new Car(2021, "Mazda", "3", "", 28, 36, 20650.00, 4, 155);
 
+            Car ee = new Car(2021, "Jeep", "Wrangler", "", 22, 29, 28070.00, 6, 260);
+            Car eee =new Car(2021, "Jeep", "Grand Cherokee", "", 19, 26, 33295.00, 8, 293);
+            Car f =  new Car(2021, "Tesla", "Model S", "", 0, 0, 69420.00, 0, 670);
+            Car ff = new Car(2021, "Tesla", "Model 3", "", 0, 0, 39990.00, 0, 470);
+            Car fff =new Car(2021, "Tesla", "Model X", "", 0, 0, 79990.00, 0, 1020);
+            Car g =  new Car(2021, "Tesla", "Model Y", "", 0, 0, 39990.00, 0, 470);
+//            Car gg = new Car(2021, "Mazda", "3", "", 28, 36, 20650.00, 4, 155);
+//            Car ggg =new Car(2021, "Mazda", "3", "", 28, 36, 20650.00, 4, 155);
+//            Car h =  new Car(2021, "Mazda", "3", "", 28, 36, 20650.00, 4, 155);
+//            Car hh = new Car(2021, "Mazda", "3", "", 28, 36, 20650.00, 4, 155);
+//            Car hhh =new Car(2021, "Mazda", "3", "", 28, 36, 20650.00, 4, 155);
+//            Car i =  new Car(2021, "Mazda", "3", "", 28, 36, 20650.00, 4, 155);
+//            Car ii = new Car(2021, "Mazda", "3", "", 28, 36, 20650.00, 4, 155);
+//            Car iii =new Car(2021, "Mazda", "3", "", 28, 36, 20650.00, 4, 155);
+
+
             carRepository.saveAll(
                     List.of(a, aa, aaa, b, bb, bbb, c, cc, ccc, d, dd, ddd, e)
             );
